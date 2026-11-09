@@ -1,0 +1,11 @@
+{
+  "name": "devops-learning",
+  "version": "1.0.0",
+  "description": "Tiny app for learning DevOps step by step",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/app.test.js"
+  },
+  "license": "MIT"
+}
