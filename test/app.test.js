@@ -7,7 +7,7 @@ test('GET /health returns ok', async (t) => {
   t.after(() => server.close()); // always runs, even if an assertion fails
   const { port } = server.address();
   const res = await fetch(`http://localhost:${port}/health`);
-  assert.strictEqual(res.status, 500); // deliberately wrong for the CI demo
+  assert.strictEqual(res.status, 200); 
   assert.deepStrictEqual(await res.json(), { status: 'ok' });
 });
 
