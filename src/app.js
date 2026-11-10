@@ -7,7 +7,7 @@ function createServer() {
       res.end(JSON.stringify({ status: 'ok' }));
     } else if (req.url === '/') {
       res.end(JSON.stringify({
-        message: 'Hello DevOps!',
+        message: 'Hello from my branch!',
         version: process.env.APP_VERSION || 'dev',
         host: require('os').hostname(),
       }));
