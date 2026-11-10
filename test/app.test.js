@@ -2,19 +2,19 @@ const test = require('node:test');
 const assert = require('node:assert');
 const { createServer } = require('../src/app');
 
-test('GET /health returns ok', async () => {
+test('GET /health returns ok', async (t) => {
   const server = createServer().listen(0);
+  t.after(() => server.close()); // always runs, even if an assertion fails
   const { port } = server.address();
   const res = await fetch(`http://localhost:${port}/health`);
-  assert.strictEqual(res.status, 500);
+  assert.strictEqual(res.status, 500); // deliberately wrong for the CI demo
   assert.deepStrictEqual(await res.json(), { status: 'ok' });
-  server.close();
 });
 
-test('unknown route returns 404', async () => {
+test('unknown route returns 404', async (t) => {
   const server = createServer().listen(0);
+  t.after(() => server.close());
   const { port } = server.address();
   const res = await fetch(`http://localhost:${port}/nope`);
   assert.strictEqual(res.status, 404);
-  server.close();
 });
